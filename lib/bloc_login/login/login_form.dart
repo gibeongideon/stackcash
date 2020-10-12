@@ -34,6 +34,7 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           return Container(
+            color: Colors.lightBlueAccent ,
             child: Form(
               child: Padding(
                 padding: EdgeInsets.all(30.0),

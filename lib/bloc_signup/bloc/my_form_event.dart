@@ -25,4 +25,16 @@ class PasswordChanged extends MyFormEvent {
   List<Object> get props => [password];
 }
 
+
+class VPasswordChanged extends MyFormEvent {
+  const VPasswordChanged({@required this.vpassword});
+
+  final String vpassword;
+
+  @override
+  List<Object> get props => [vpassword];
+}
+
+
+
 class FormSubmitted extends MyFormEvent {}
