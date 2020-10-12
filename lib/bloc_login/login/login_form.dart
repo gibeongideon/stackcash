@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stackcash/bloc_login/login/bloc/login_bloc.dart';
-import './register_page.dart';
+// import './register_page.dart';
+import 'package:stackcash/bloc_signup/signuppage.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -92,7 +93,7 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         RaisedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterPage()), );
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
                           },
                           child: Text(
                             'Register Here',
