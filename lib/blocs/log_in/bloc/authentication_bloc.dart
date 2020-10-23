@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:stackcash/bloc_login/repository/user_repository.dart';
-import 'package:stackcash/bloc_login/model/user_model.dart';
+import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
+import 'package:stackcash/blocs/log_in/model/user_model.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -51,6 +51,14 @@ class AuthenticationBloc
       await userRepository.delteToken(id: 0);
 
       yield AuthenticationUnauthenticated();
+    }
+
+    if (event is SignUpButtonPressed) {
+      // yield AuthenticationLoading();
+
+      // await userRepository.delteToken(id: 0);
+
+      yield SignUpState();
     }
   }
 }

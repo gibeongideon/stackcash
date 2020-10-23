@@ -1,10 +1,11 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:stackcash/bloc_login/bloc/authentication_bloc.dart';
-import 'package:stackcash/bloc_login/repository/user_repository.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
+
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -40,8 +41,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         authenticationBloc.add(LoggedIn(user: user));
         yield LoginInitial();
       } catch (error) {
-        yield LoginFaliure(error: error.toString());
+        
+
+        if (error.toString().contains('Connection')) {
+          yield LoginFaliure(error:'Check your internet connection  and try again');
+          } else if(error.toString().contains('credential')) {
+          yield LoginFaliure(error:'Password or username is incorrect');
+          }else if(error.toString().contains('username')) {  //username or password//TO DO
+          yield LoginFaliure(error:'Username or password field cannot be blank');
+          }else{
+            yield LoginFaliure(error:error.toString());
+          }
+
+
+        // yield LoginFaliure(error: error.toString());
       }
     }
   }
 }
+
+
+
+
+
+
+
+//         yield LoginFaliure(error: error.toString());
+//       }
+//     }
+//   }
+// }

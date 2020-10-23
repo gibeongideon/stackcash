@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stackcash/bloc_login/bloc/authentication_bloc.dart';
-import 'package:stackcash/wheel/games.dart';
-// import 'package:bloc_login/bloc_login/login/login_form.dart';
-// import 'package:bloc_login/bloc_login/repository/user_repository.dart';
-// import 'package:bloc_login/bloc_login/login/bloc/login_state.dart';
+import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+import 'package:stackcash/blocs/wheel/games.dart';
+
 
 class HomePage extends StatelessWidget {
   @override

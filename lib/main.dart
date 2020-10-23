@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:bloc/bloc.dart';
+// import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stackcash/bloc_login/repository/user_repository.dart';
+import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
 
-import 'package:stackcash/bloc_login/bloc/authentication_bloc.dart';
-import 'package:stackcash/bloc_login/splash/splash.dart';
-import 'package:stackcash/bloc_login/login/login_page.dart';
-import 'package:stackcash/bloc_login/home/home.dart';
-import 'package:stackcash/bloc_login/common/common.dart';
+import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+import 'package:stackcash/blocs/log_in/splash/splash.dart';
+import 'package:stackcash/blocs/log_in/login/login_page.dart';
+import 'package:stackcash/blocs/log_in/home/home.dart';
+import 'package:stackcash/blocs/log_in/common/common.dart';
+import 'package:stackcash/blocs/sign_up/signuppage.dart';
 
 // class SimpleBlocDelegate extends BlocDelegate {
 //   @override
@@ -70,6 +71,10 @@ class App extends StatelessWidget {
           }
           if (state is AuthenticationLoading) {
             return LoadingIndicator();
+          }
+
+          if (state is SignUpState){
+            return SignUpPage();
           }
           
         },

@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-// import 'package:bloc_login/bloc_login/model/api_model.dart';
-import 'package:stackcash/bloc_login/model/api_model.dart';
+import 'package:stackcash/blocs/log_in/model/api_model.dart';
 
 
 

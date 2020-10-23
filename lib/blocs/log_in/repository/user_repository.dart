@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:stackcash/bloc_login/model/user_model.dart';
 import 'package:meta/meta.dart';
-import 'package:stackcash/bloc_login/model/api_model.dart';
-import 'package:stackcash/bloc_login/api_connection/api_connection.dart';
-import 'package:stackcash/bloc_login/dao/user_dao.dart';
+import 'package:stackcash/blocs/log_in/model/user_model.dart';
+import 'package:stackcash/blocs/log_in/model/api_model.dart';
+import 'package:stackcash/blocs/log_in/api_connection/api_connection.dart';
+import 'package:stackcash/blocs/log_in/dao/user_dao.dart';
 
 class UserRepository {
   final userDao = UserDao();

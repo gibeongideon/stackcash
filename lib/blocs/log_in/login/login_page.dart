@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stackcash/bloc_login/repository/user_repository.dart';
+import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
 
-import 'package:stackcash/bloc_login/bloc/authentication_bloc.dart';
-import 'package:stackcash/bloc_login/login/bloc/login_bloc.dart';
-import 'package:stackcash/bloc_login/login/login_form.dart';
-// import 'package:bloc_login/bloc_login/login/register_screen_sf.dart';
+import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+import 'package:stackcash/blocs/log_in/login/bloc/login_bloc.dart';
+import 'package:stackcash/blocs/log_in/login/login_form.dart';
+
+
 
 class LoginPage extends StatelessWidget {
   final UserRepository userRepository;

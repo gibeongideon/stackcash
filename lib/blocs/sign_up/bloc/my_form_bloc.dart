@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-// import 'package:flutter_form_validation/models/models.dart';
-import 'package:stackcash/bloc_signup/models/models.dart';
+
+import 'package:stackcash/blocs/sign_up/models/models.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:stackcash/bloc_signup/register_user/api_post_user.dart';
+import 'package:stackcash/blocs/sign_up/register_user/api_post_user.dart';
 
 part 'my_form_event.dart';
 part 'my_form_state.dart';

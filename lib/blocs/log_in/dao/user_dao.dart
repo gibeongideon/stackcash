@@ -1,5 +1,5 @@
-import 'package:stackcash/bloc_login/database/user_database.dart';
-import 'package:stackcash/bloc_login/model/user_model.dart';
+import 'package:stackcash/blocs/log_in/database/user_database.dart';
+import 'package:stackcash/blocs/log_in/model/user_model.dart';
 
 class UserDao {
   final dbProvider = DatabaseProvider.dbProvider;

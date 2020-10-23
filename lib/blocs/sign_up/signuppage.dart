@@ -2,8 +2,8 @@
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:stackcash/bloc/my_form_bloc.dart';
-import 'package:stackcash/bloc_signup/bloc/my_form_bloc.dart';
+
+import 'package:stackcash/blocs/sign_up/bloc/my_form_bloc.dart';
 import 'package:formz/formz.dart';
 
 // void main() {
@@ -48,12 +48,12 @@ class SignUpForm extends StatelessWidget {
             color: Colors.lightBlueAccent ,
             child: Form(
               child: Padding(
-                padding: EdgeInsets.all(30.0),
+                padding: EdgeInsets.all(15.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    EmailInput(),
+                    // EmailInput(),
                     PhoneNumberInput(),
                     PasswordInput(),
                     ConfirmPasswordInput(),
@@ -268,6 +268,19 @@ class SubmitButton extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class SuccessDialog extends StatelessWidget {
   @override

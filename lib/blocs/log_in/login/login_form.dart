@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stackcash/bloc_login/login/bloc/login_bloc.dart';
-// import './register_page.dart';
-import 'package:stackcash/bloc_signup/signuppage.dart';
+import 'package:stackcash/blocs/log_in/login/bloc/login_bloc.dart';
+import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+// import 'package:stackcash/blocs/sign_up/signuppage.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -44,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
                   children: <Widget>[
                     TextFormField(
                       decoration: InputDecoration(
-                          labelText: 'username', icon: Icon(Icons.person)),
+                          labelText: 'mobile number', icon: Icon(Icons.phone)),
                       controller: _usernameController,
                     ),
                     TextFormField(
@@ -94,7 +94,8 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         RaisedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
+                            BlocProvider.of<AuthenticationBloc>(context).add(SignUpButtonPressed());
+                            // Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
                           },
                           child: Text(
                             'Register Here',
