@@ -43,6 +43,21 @@ class SignUpForm extends StatelessWidget {
               const SnackBar(content: Text('Submitting...')),
             );
         }
+        if (state.status.isSubmissionFailure) {
+          Scaffold.of(context).hideCurrentSnackBar();
+          showDialog<void>(
+            context: context,
+            builder: (_) => InternetFailureDialog(),
+          );
+        }
+
+        if (state.status.isPure) {
+          Scaffold.of(context).hideCurrentSnackBar();
+          showDialog<void>(
+            context: context,
+            builder: (_) => UserExistDialog(),
+          );
+        }
       },
       child:Container(
             color: Colors.lightBlueAccent ,
@@ -303,6 +318,90 @@ class SuccessDialog extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       'Signup Successfully! Login now ?',
+                      softWrap: true,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            RaisedButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+
+              }//=> Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class InternetFailureDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                const Icon(Icons.info),
+                const Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Failed to sign up! Check internet and try again',
+                      softWrap: true,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            RaisedButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+
+              }//=> Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class UserExistDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                const Icon(Icons.info),
+                const Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'that username already exists.Try other',
                       softWrap: true,
                     ),
                   ),

@@ -71,8 +71,6 @@ class MyFormBloc extends Bloc<MyFormEvent, MyFormState> {
         yield state.copyWith(status: FormzStatus.submissionInProgress);
 
 
-
-        ////me
         try {
 
           await signUp(state.email.value,state.password.value);
@@ -82,45 +80,17 @@ class MyFormBloc extends Bloc<MyFormEvent, MyFormState> {
           // yield LoginInitial();
         }  on  Exception catch (error) {
           
-          print('MY ERRROR$error');
-          yield state.copyWith(status: FormzStatus.submissionFailure);
+          if (error.toString().contains('Connection')) {
+             yield state.copyWith(status: FormzStatus.submissionFailure);
 
-
-          // if (error.toString().contains('Connection')) {
-          //   yield LoginFaliure(error:'Check your internet connection  and try again');
-          //   } else if(error.toString().contains('credential')) {
-          //   yield LoginFaliure(error:'Password or username is incorrect');
-          //   }else if(error.toString().contains('username')) {  //username or password//TO DO
-          //   yield LoginFaliure(error:'Username or password field cannot be blank');
-          //   }else{
-          //     yield LoginFaliure(error:error.toString());
-          //   }
-
-
-        // yield LoginFaliure(error: error.toString());
+          } else if(error.toString().contains('username')) {
+            yield state.copyWith(status: FormzStatus.pure );
+          }
+          
       }
-        ///me
-
-        // await Future<void>.delayed(const Duration(seconds: 1));
-
-      // try {
-        // await signUp(state.email.value,state.password.value);
-          // emit(state.copyWith(status: FormzStatus.submissionSuccess));
-          // } on Exception {
-          //   emit(state.copyWith(status: FormzStatus.submissionFailure));
-          //   }
-
-        
-
-        
-      //  else{
-      //    print('Password dont match');
-      //    yield state.copyWith(status: FormzStatus.submissionFailure);
-      //  }
 
       }
     }
     
-
   }
 }

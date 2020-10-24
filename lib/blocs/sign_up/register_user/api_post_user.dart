@@ -27,7 +27,7 @@ Future<UserRegister>signUp(String userName,String password) async{
     return UserRegister.fromJson(json.decode(response.body));
 
   } else{
-    throw Exception('Failed to create user');
+    throw Exception('${response.body}' );  
 
   }
 
