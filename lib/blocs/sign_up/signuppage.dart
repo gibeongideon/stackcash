@@ -311,7 +311,10 @@ class SuccessDialog extends StatelessWidget {
             ),
             RaisedButton(
               child: const Text('OK'),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop();
+
+              }//=> Navigator.of(context).pop(),
             ),
           ],
         ),

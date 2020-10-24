@@ -8,7 +8,7 @@ class MyFormState extends Equatable {
     this.status = FormzStatus.pure,
   });
 
-  final Email email;
+  final Email email; 
   final Password password;
   final Password vpassword;
   final FormzStatus status;
@@ -30,3 +30,4 @@ class MyFormState extends Equatable {
   @override
   List<Object> get props => [email, password,vpassword, status];
 }
+

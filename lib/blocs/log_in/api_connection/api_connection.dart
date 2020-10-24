@@ -27,3 +27,12 @@ Future<Token> getToken(UserLogin userLogin) async {
 }
 
 
+
+// getUserId(user){
+//   final http.Response response = http.get(''),
+//       headers: <String, String>{
+//       'Content-Type': 'application/json; charset=UTF-8',
+//       },
+//       body json
+
+// }

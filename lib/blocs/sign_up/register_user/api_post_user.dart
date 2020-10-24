@@ -5,8 +5,7 @@ import './user_model.dart';
 
 
 
-
-Future<UserRegister>placeStake(String userName,String password) async{
+Future<UserRegister>signUp(String userName,String password) async{
   final String email = 'MyEmail@gmail.com';
 
   final http.Response response = await http.post(
@@ -24,6 +23,7 @@ Future<UserRegister>placeStake(String userName,String password) async{
 
   );
   if (response.statusCode==201){
+    
     return UserRegister.fromJson(json.decode(response.body));
 
   } else{
