@@ -216,3 +216,69 @@ class RouletteScore extends StatelessWidget {
         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
   }
 }
+
+
+
+
+
+
+
+
+class GRoulette extends StatelessWidget {
+  final StreamController _dividerController = StreamController<int>();
+
+  final _wheelNotifier = StreamController<double>();
+
+  dispose() {
+    _dividerController.close();
+    _wheelNotifier.close();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Color(0xffDDC3FF), elevation: 0.0),
+      backgroundColor: Color(0xffDDC3FF),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SpinningWheel(
+              Image.asset('assets/images/roulette-8-300.png'),
+              width: 310,
+              height: 310,
+              initialSpinAngle: _generateRandomAngle(),
+              spinResistance: 0.6,
+              canInteractWhileSpinning: false,
+              dividers: 8,
+              onUpdate: _dividerController.add,
+              onEnd: _dividerController.add,
+              secondaryImage:
+                  Image.asset('assets/images/roulette-center-300.png'),
+              secondaryImageHeight: 110,
+              secondaryImageWidth: 110,
+              shouldStartOrStop: _wheelNotifier.stream,
+            ),
+            SizedBox(height: 30),
+            StreamBuilder(
+              stream: _dividerController.stream,
+              builder: (context, snapshot) =>
+                  snapshot.hasData ? RouletteScore(snapshot.data) : Container(),
+            ),
+            SizedBox(height: 30),
+            new RaisedButton(
+              child: new Text("Start"),
+              onPressed: () =>
+                  _wheelNotifier.sink.add(_generateRandomVelocity()),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  double _generateRandomVelocity() => (Random().nextDouble() * 6000) + 2000;
+
+  double _generateRandomAngle() => Random().nextDouble() * pi * 2;
+}
+

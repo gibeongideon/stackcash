@@ -10,6 +10,7 @@ import 'package:stackcash/blocs/log_in/login/login_page.dart';
 import 'package:stackcash/blocs/log_in/home/home.dart';
 import 'package:stackcash/blocs/log_in/common/common.dart';
 import 'package:stackcash/blocs/sign_up/signuppage.dart';
+import 'package:stackcash/data/repository/user_data_repository.dart';
 
 class SimpleObserver extends BlocObserver {
   @override
@@ -33,6 +34,7 @@ class SimpleObserver extends BlocObserver {
 void main() {
   Bloc.observer = SimpleObserver();
   final userRepository = UserRepository();
+  final userDataRepository = UserDataRepository(); 
 
   runApp(
     BlocProvider<AuthenticationBloc>(
@@ -73,9 +75,9 @@ class App extends StatelessWidget {
             return LoadingIndicator();
           }
 
-          if (state is SignUpState){
-            return SignUpPage();
-          }
+          // if (state is SignUpState){
+          //   return SignUpPage();
+          // }
           
         },
       ),

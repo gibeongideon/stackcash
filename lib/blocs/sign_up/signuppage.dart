@@ -73,81 +73,6 @@ class SignUpForm extends StatelessWidget {
                     PasswordInput(),
                     ConfirmPasswordInput(),
                     SubmitButton(),
-
-
-
-                    // Container(
-                    //   // width: MediaQuery.of(context).size.width * 0.85,
-                    //   // height: MediaQuery.of(context).size.width * 0.12,
-                    //   child: Padding(
-                    //     padding: EdgeInsets.only(top: 10.0),
-                    //     child: Column(
-                    //       children: <Widget>[
-                    //         RaisedButton(
-                    //       onPressed: state is! LoginLoading
-                    //           ? _onLoginButtonPressed
-                    //           : null,
-                    //       child: Text(
-                    //         'Login',
-                    //         style: TextStyle(
-                    //           fontSize: 18.0,
-                    //         ),
-                    //       ),
-                    //       shape: StadiumBorder(
-                    //         side: BorderSide(
-                    //           color: Colors.blue,
-                    //           width: 1,
-                    //         ),
-                    //       ),
-                    //     ),
-                    
-                    //       ],
-                    //     ), 
-                    //   ),
-                    // ),
-                    // Container(
-                    //   // width: MediaQuery.of(context).size.width * 0.55,
-                    //   // height: MediaQuery.of(context).size.width * 0.12,
-                    //   child: Padding(
-                    //     padding: EdgeInsets.only(top: 10.0),
-                    //     child: Column(
-                    //       children: <Widget>[
-
-                    //         Text('Don\'t have an account?',style: TextStyle(fontFamily: 'Montserrat'),
-                    //     ),
-                    //     RaisedButton(
-                    //       onPressed: () {
-                    //         Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
-                    //       },
-                    //       child: Text(
-                    //         'Register Here',
-                    //         style: TextStyle(
-                    //           fontSize: 13.0,
-                    //         ),
-                    //       ),
-                    //       shape: StadiumBorder(
-                    //         side: BorderSide(
-                    //           color: Colors.blue,
-                    //           width: 1,
-                    //         ),
-                    //       ),
-                    //     ),
-
-                    //       ],
-                    //     ), 
-                    //   ),
-                    // ),
-      //  Padding(
-    //     padding: EdgeInsets.all(2.0),
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       children: <Widget>[
-    //         // EmailInput(),
-    //         PhoneNumberInput(),
-    //         PasswordInput(),
-    //         ConfirmPasswordInput(),
-    //         SubmitButton(),
             
           ],
         ),
@@ -267,15 +192,6 @@ class SubmitButton extends StatelessWidget {
           shape: StadiumBorder(
             side: BorderSide(color: Colors.blue,width: 1,),
             ),
-          // (){
-          //   if (state.status.isValidated){
-          //     if (state.password ==state.vpassword){
-          //       return context.bloc<MyFormBloc>().add(FormSubmitted());
-          //   }
-
-          //   }
-            
-          // },
 
           child: const Text('Submit'),
         );
@@ -287,17 +203,8 @@ class SubmitButton extends StatelessWidget {
 
 
 
-
-
-
-
-
-
-
-
-
-
 class SuccessDialog extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -382,6 +289,7 @@ class InternetFailureDialog extends StatelessWidget {
 
 
 class UserExistDialog extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
