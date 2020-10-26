@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
-import 'package:stackcash/blocs/wheel/games.dart';
+import 'package:stackcash/ui/home_page.dart';
 
 
-class HomePage extends StatelessWidget {
+class LoginHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                   child: Text(
                     'Logout',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                     ),
                   ),
                   onPressed: () {
@@ -34,12 +34,12 @@ class HomePage extends StatelessWidget {
                         .add(LoggedOut());
                   },
                   shape: StadiumBorder(
-                    side: BorderSide(
-                      color: Colors.red,
-                      width: 1,
+                    // side: BorderSide(
+                    //   color: Colors.red,
+                    //   width: ,
                     ),
                   ),
-                ),
+                // ),
                 
               ],
             ),
@@ -47,13 +47,7 @@ class HomePage extends StatelessWidget {
               child: MyHomePage(),
             ),
           );
-          // } 
-
-
 
       }
-      
-
-
-
+    
   }

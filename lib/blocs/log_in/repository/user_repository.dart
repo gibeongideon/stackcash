@@ -42,4 +42,10 @@ class UserRepository {
     bool result = await userDao.checkUser(0);
     return result;
   }
+
+//   Future getUser() async {
+//   final result = await userDao.getUser(0);
+//   print('USER_USER${result['username']}');
+//   return result['username'];
+// }
 }

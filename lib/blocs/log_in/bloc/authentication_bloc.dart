@@ -27,16 +27,17 @@ class AuthenticationBloc
   ) async* {
     if (event is AppStarted) {
 
-      // final bool hasToken = await userRepository.hasToken();
+      final bool hasToken = await userRepository.hasToken();
 
-      // if (hasToken) {
+      if (hasToken) {
 
+        await userRepository.delteToken(id: 0);/// bug fix/  ensure previous users are deleated on app start//No automatic login
         yield AuthenticationUnauthenticated();
-      } //else {
-      //   yield AuthenticationUnauthenticated();
-      // }
-    // }
-
+  
+      } else {
+        yield AuthenticationUnauthenticated();
+      }
+    }
     if (event is LoggedIn) {
       yield AuthenticationLoading();
 

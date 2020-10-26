@@ -2,78 +2,109 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_spinning_wheel/flutter_spinning_wheel.dart';
 import 'spinningwheel/flutter_spinning_wheel.dart';
 
 
 
-class MyHomePage extends StatelessWidget {
+class GRoulette extends StatelessWidget {
+  final StreamController _dividerController = StreamController<int>();
+
+  final _wheelNotifier = StreamController<double>();
+
+  dispose() {
+    _dividerController.close();
+    _wheelNotifier.close();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Container(
-              color: Color(0xffDDC3FF),
-              child: InkWell(
-                  child: Center(child: Text('How to play')),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Basic()),
-                    );
-                  }),
+      appBar: AppBar(title: const Text('StackPesa | Register'),
+      backgroundColor: Color(0xffDDC3FF), elevation: 0.0),
+      backgroundColor: Color(0xffDBC3FF),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: SpinningWheel(
+
+                Image.asset('assets/images/roulette-8-300.png'),
+                width: 210,
+                height: 210,
+                initialSpinAngle:_generateRandomAngle(),
+                spinResistance: 0.6,
+                canInteractWhileSpinning: false,
+                dividers: 8,
+                onUpdate: _dividerController.add,
+                onEnd: _dividerController.add,
+                secondaryImage:
+                    Image.asset('assets/images/roulette-center-300.png'),
+                secondaryImageHeight: 70,
+                secondaryImageWidth: 70,
+                shouldStartOrStop: _wheelNotifier.stream,
+              ),
+              ),
+            Expanded(child:Text('STUFF')),
+              
+            
+            SizedBox(height: 30),
+            StreamBuilder(
+              stream: _dividerController.stream,
+              builder: (context, snapshot) =>
+                  snapshot.hasData ? GRouletteScore(snapshot.data) : Container(),
             ),
-          ),
-         Expanded(
-            child: Container(
-              color: Color(0xffFE9D2),
-              child: InkWell(
-                  child: Center(child: Text('Invite Friend games')),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Basic()),
-                    );
-                  }),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Color(0xffFDC3FF),
-              child: InkWell(
-                  child: Center(child: Text('Black or Red')),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Roulette()),  
-                    );
-                  }),
-            ),
-          ),
-        ],
+            SizedBox(height: 30),
+            new RaisedButton(
+              child: new Text("Start"),
+              onPressed: () =>
+                  _wheelNotifier.sink.add(_generateRandomVelocity()),
+            )
+          ],
+        ),
       ),
     );
   }
 
-  Widget buildNavigationButton({String text, Function onPressedFn}) {
-    return FlatButton(
-      color: Color.fromRGBO(255, 255, 255, 0.3),
-      textColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(50.0),
-      ),
-      onPressed: onPressedFn,
-      child: Text(
-        text,
-        style: TextStyle(color: Colors.white, fontSize: 18.0),
-      ),
-    );
+  double _generateRandomVelocity() {
+    double  veloc = (Random().nextDouble() * 6000) + 2000;
+    print('VELO$veloc');
+    return veloc;
+    }
+
+  double _generateRandomAngle() => Random().nextDouble() * pi * 2;
+}
+
+
+
+class GRouletteScore extends StatelessWidget {
+  final int selected;
+
+  final Map<int, String> labels = {
+    1: 'RED-1\$',
+    2: 'WHITE-1\$',
+    3: 'RED-2\$',
+    4: 'WHITE-2\$',
+    5: 'RED-3\$',
+    6: 'WHITE-3\$',
+    7: 'RED-4\$',
+    8: 'WHITE-4\$',
+
+  };
+
+  GRouletteScore(this.selected);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('${labels[selected]}',
+        style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
   }
 }
+
+
+
+
+
 
 class Basic extends StatelessWidget {
   final StreamController _dividerController = StreamController<int>();
@@ -150,7 +181,7 @@ class Roulette extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Color(0xffDDC3FF), elevation: 0.0),
-      backgroundColor: Color(0xffDDC3FF),
+      backgroundColor: Color(0xffBDC3FF),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -217,68 +248,4 @@ class RouletteScore extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-class GRoulette extends StatelessWidget {
-  final StreamController _dividerController = StreamController<int>();
-
-  final _wheelNotifier = StreamController<double>();
-
-  dispose() {
-    _dividerController.close();
-    _wheelNotifier.close();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Color(0xffDDC3FF), elevation: 0.0),
-      backgroundColor: Color(0xffDDC3FF),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SpinningWheel(
-              Image.asset('assets/images/roulette-8-300.png'),
-              width: 310,
-              height: 310,
-              initialSpinAngle: _generateRandomAngle(),
-              spinResistance: 0.6,
-              canInteractWhileSpinning: false,
-              dividers: 8,
-              onUpdate: _dividerController.add,
-              onEnd: _dividerController.add,
-              secondaryImage:
-                  Image.asset('assets/images/roulette-center-300.png'),
-              secondaryImageHeight: 110,
-              secondaryImageWidth: 110,
-              shouldStartOrStop: _wheelNotifier.stream,
-            ),
-            SizedBox(height: 30),
-            StreamBuilder(
-              stream: _dividerController.stream,
-              builder: (context, snapshot) =>
-                  snapshot.hasData ? RouletteScore(snapshot.data) : Container(),
-            ),
-            SizedBox(height: 30),
-            new RaisedButton(
-              child: new Text("Start"),
-              onPressed: () =>
-                  _wheelNotifier.sink.add(_generateRandomVelocity()),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  double _generateRandomVelocity() => (Random().nextDouble() * 6000) + 2000;
-
-  double _generateRandomAngle() => Random().nextDouble() * pi * 2;
-}
 

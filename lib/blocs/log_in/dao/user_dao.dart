@@ -32,4 +32,22 @@ class UserDao {
       return false;
     }
   }
+
+  // Future getUser(int id) async {
+  //   final db = await dbProvider.database;
+  //   try {
+  //     List<Map> users = await db
+  //         .query(userTable, where: 'id = ?', whereArgs: [id]);
+
+  //     return users.first;
+  //   //   if (users.length > 0) {
+  //   //     return true;
+  //   //   } else {
+  //   //     return false;
+  //   //   }
+  //   } catch (error) {
+  //     print('DB ERR$error');
+  //     return 'noUser';
+  //   }
+  // }
 }

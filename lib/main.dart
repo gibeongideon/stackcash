@@ -66,7 +66,7 @@ class App extends StatelessWidget {
             return SplashPage();
           }
           if (state is AuthenticationAuthenticated) {
-            return HomePage();
+            return LoginHomePage();
           }
           if (state is AuthenticationUnauthenticated) {
             return LoginPage(userRepository: userRepository,);
