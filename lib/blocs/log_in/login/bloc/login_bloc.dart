@@ -47,7 +47,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           yield LoginFaliure(error:'Check your internet connection  and try again');
           } else if(error.toString().contains('credential')) {
           yield LoginFaliure(error:'Password or username is incorrect');
-          }else if(error.toString().contains('username')) {  //username or password//TO DO
+          }else if(error.toString().contains('blank')) {  //username or password//TO DO
           yield LoginFaliure(error:'Username or password field cannot be blank');
           }else{
             yield LoginFaliure(error:error.toString());
