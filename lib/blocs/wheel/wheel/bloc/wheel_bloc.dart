@@ -38,7 +38,8 @@ class WheelBloc extends Bloc<WheelEvent, WheelState> {
       //     username: event.username,
       //     password: event.password,
       //   );
-      final double vel =8000;
+      await Future<void>.delayed(const Duration(seconds: 1));
+      final double vel =8500;
 
       //   authenticationBloc.add(LoggedIn(user: user));
         yield WheelSpinning(velocity:vel );
