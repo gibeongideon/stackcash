@@ -31,7 +31,8 @@ class WheelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wheel | StackPesa'),//stackit // stackcash/stackpesa// gstacks   stackcash
+        backgroundColor: Colors.yellowAccent,
+        title: Text('Wheel | StackPesa',style: TextStyle( color:Colors.red, fontSize: 20.0)),//stackit // stackcash/stackpesa// gstacks   stackcash
       ),
       body: BlocProvider(
         create: (context) {
@@ -72,7 +73,7 @@ Widget gibeonWheel(){
                 width: 210,
                 height: 210,
                 initialSpinAngle:_generateRandomAngle(),
-                spinResistance: 0.4,
+                spinResistance: 0.3,
                 canInteractWhileSpinning: false,
                 dividers: 8,
                 onUpdate: _dividerController.add,
@@ -80,7 +81,7 @@ Widget gibeonWheel(){
                 secondaryImage:
                     Image.asset('assets/images/gif_.gif'),
                 secondaryImageHeight: 218,
-                secondaryImageWidth: 218,
+                secondaryImageWidth: 218, 
                 shouldStartOrStop: _wheelNotifier.stream,
               );
 }
@@ -104,15 +105,31 @@ Widget gibeonWheel(){
       child: BlocBuilder<WheelBloc, WheelState>(
         builder: (context, state) {
           return Container(
-            color: Colors.lightBlueAccent ,
+            color: Colors.yellow,
             child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(height: 112,),
+                    SizedBox(height: 25,),
                     Expanded(
-                      child: gibeonWheel()
+                      child: Column(
+                        children: <Widget>[
+                          gibeonWheel(),
+                          SizedBox(height: 25,),
+                          StreamBuilder(
+
+                            stream: _dividerController.stream,
+                            builder: (context, snapshot) =>snapshot.hasData 
+                            ? GRouletteScore(snapshot.data) 
+                            : Container(),
+                            ),
+
+
+                        ]
                       ),
+                      
+                      ),
+
  
                     Container(
                       // width: MediaQuery.of(context).size.width * 0.85,
@@ -147,11 +164,11 @@ Widget gibeonWheel(){
                         ), 
                       ),
                     ),
-                    Container(
-                      child: state is WheelLoading
-                          ? CircularProgressIndicator()
-                          : null,
-                    ),
+                    Container(),
+                    //   child: state is WheelLoading
+                    //       ? CircularProgressIndicator()
+                    //       : null,
+                    // ),
                   ],
                 ),
            
@@ -240,3 +257,31 @@ class GRouletteScore extends StatelessWidget {
         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
   }
 }
+
+
+
+
+
+// class WRouletteScore extends StatelessWidget {
+//   final int selected;
+
+//   final Map<int, Widget> labels = {
+//     1: 'RED-1\$',
+//     2: 'WHITE-1\$',
+//     3: 'RED-2\$',
+//     4: 'WHITE-2\$',
+//     5: 'RED-3\$',
+//     6: 'WHITE-3\$',
+//     7: 'RED-4\$',
+//     8: 'WHITE-4\$',
+
+//   };
+
+//   WRouletteScore(this.selected);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text('${labels[selected]}',
+//         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
+//   }
+// }

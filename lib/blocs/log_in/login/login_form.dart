@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stackcash/blocs/log_in/login/bloc/login_bloc.dart';
 // import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
 import 'package:stackcash/blocs/sign_up/signuppage.dart';
+import 'package:stackcash/ui/const/color_const.dart';
+import 'package:stackcash/ui/const/gradient_const.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -34,14 +36,17 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           return Container(
-            color: Colors.lightBlueAccent ,
+            // color: Colors.yellowAccent,
+            decoration: BoxDecoration(
+              gradient: SIGNUP_BACKGROUND),
             child: Form(
               child: Padding(
-                padding: EdgeInsets.all(30.0),
+                padding: EdgeInsets.all(30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    Container(child:Text('SPINCASH LOGO'),),
                     TextFormField(
                       decoration: InputDecoration(
                           labelText: 'mobile number', icon: Icon(Icons.phone)),
@@ -61,19 +66,20 @@ class _LoginFormState extends State<LoginForm> {
                         child: Column(
                           children: <Widget>[
                             RaisedButton(
+                              color: BLUE,
                           onPressed: state is! LoginLoading
                               ? _onLoginButtonPressed
                               : null,
                           child: Text(
                             'Login',
                             style: TextStyle(
-                              fontSize: 18.0,
+                              fontSize: 18.0,color:Colors.blue
                             ),
                           ),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.blue,
-                              width: 1,
+                              color: Colors.yellow,
+                              width: 2,
                             ),
                           ),
                         ),
@@ -90,9 +96,10 @@ class _LoginFormState extends State<LoginForm> {
                         child: Column(
                           children: <Widget>[
 
-                            Text('Don\'t have an account?',style: TextStyle(fontFamily: 'Montserrat'),
-                        ),
+                            Text('Don\'t have an account?'),//,style: TextStyle(fontFamily: 'Montserrat',color: Colors.black),
+                        // ),
                         RaisedButton(
+                          color: BLUE,
                           onPressed: () {
                             // BlocProvider.of<AuthenticationBloc>(context).add(SignUpButtonPressed());
                             Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
@@ -100,13 +107,13 @@ class _LoginFormState extends State<LoginForm> {
                           child: Text(
                             'Register Here',
                             style: TextStyle(
-                              fontSize: 13.0,
+                              fontSize: 15.0,color: Colors.black45
                             ),
                           ),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.blue,
-                              width: 1,
+                              color: Colors.yellow,
+                              width: 2,
                             ),
                           ),
                         ),
