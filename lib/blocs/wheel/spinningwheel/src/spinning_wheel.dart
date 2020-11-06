@@ -82,9 +82,9 @@ class SpinningWheel extends StatefulWidget {
     this.shouldStartOrStop,
   })  : assert(width > 0.0 && height > 0.0),
         assert(spinResistance > 0.0 && spinResistance <= 1.0),
-        assert(initialSpinAngle >= 0.0 && initialSpinAngle <= (2 * pi)),
-        assert(secondaryImage == null ||
-            (secondaryImageHeight <= height && secondaryImageWidth <= width));
+        assert(initialSpinAngle >= 0.0 && initialSpinAngle <= (2 * pi));
+        // assert(secondaryImage == null ||
+        //     (secondaryImageHeight <= height && secondaryImageWidth <= width));
 
   @override
   _SpinningWheelState createState() => _SpinningWheelState();

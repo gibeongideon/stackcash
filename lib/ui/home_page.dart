@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:stackcash/blocs/wheel/games.dart';
+import 'package:stackcash/blocs/wheel/wheel/wheel_page.dart';
+// import 'package:stackcash/blocs/wheel/wheel_timer/wheel_timer.dart';
 
 
 class MyHomePage extends StatelessWidget {
@@ -18,7 +20,7 @@ class MyHomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Wheel()),
+                      MaterialPageRoute(builder: (context) => BRoulette()),
                     );
                   }),
             ),
@@ -44,7 +46,7 @@ class MyHomePage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GRoulette()),  
+                      MaterialPageRoute(builder: (context) =>WheelPage()),// GRoulette()),  
                     );
                   }),
             ),

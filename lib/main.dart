@@ -34,7 +34,7 @@ class SimpleObserver extends BlocObserver {
 void main() {
   Bloc.observer = SimpleObserver();
   final userRepository = UserRepository();
-  final userDataRepository = UserDataRepository(); 
+  // final userDataRepository = UserDataRepository(); 
 
   runApp(
     BlocProvider<AuthenticationBloc>(
@@ -74,10 +74,7 @@ class App extends StatelessWidget {
           if (state is AuthenticationLoading) {
             return LoadingIndicator();
           }
-
-          // if (state is SignUpState){
-          //   return SignUpPage();
-          // }
+          return CircularProgressIndicator();//??
           
         },
       ),

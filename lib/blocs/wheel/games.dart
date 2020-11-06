@@ -1,28 +1,28 @@
 import 'dart:async';
 // import 'dart:ffi';
 import 'dart:math';
-// import 'package:bloc/bloc.dart';;
+// import 'package:bloc/bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stackcash/blocs/wheel/wheel_timer/bloc/timer_bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:stackcash/blocs/wheel/wheel_timer/bloc/timer_bloc.dart';
 // import 'package:provider/provider.dart';
 import 'spinningwheel/flutter_spinning_wheel.dart';
 import 'package:stackcash/blocs/wheel/wheel_timer/wheel_timer.dart';
+// import 'package:stackcash/blocs/wheel/bloc/wheel_bloc.dart';
 
 
-
-class Wheel extends StatelessWidget{
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: BlocProvider.of<TimerBloc>(context),
-      child: BRoulette(),
-      );
-  }
-}
-
+// class WheelTimer extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//         create: (BuildContext context) => WheelBloc(),
+//         child: BRoulette(),
+//       );
+  
+//   }
+// }
 
 
 class BRoulette extends StatelessWidget {
@@ -42,7 +42,7 @@ class BRoulette extends StatelessWidget {
 
 Widget gibeonWheel(){
 
-  // _wheelNotifier.sink.add(_generateRandomVelocity());
+  _wheelNotifier.sink.add(_generateRandomVelocity());
 
   return SpinningWheel(
 
@@ -56,9 +56,9 @@ Widget gibeonWheel(){
                 onUpdate: _dividerController.add,
                 onEnd: _dividerController.add,
                 secondaryImage:
-                    Image.asset('assets/images/roulette-center-300.png'),
-                secondaryImageHeight: 50,
-                secondaryImageWidth: 50,
+                    Image.asset('assets/images/gif_.gif'),
+                secondaryImageHeight: 215,
+                secondaryImageWidth: 215,
                 shouldStartOrStop: _wheelNotifier.stream,
               );
 }
@@ -71,30 +71,31 @@ Widget gibeonWheel(){
       appBar: AppBar(title: const Text('StackPesa | Register'),
       backgroundColor: Color(0xffDDC3FF), elevation: 0.0),
       backgroundColor: Color(0xffDBC3FF),
-      body:BlocConsumer(
-        builder: (context,state){
-          return gibeonWheel();
-          
-        },
-        listener: (context,state){
-          if (state is TimerRunInProgress){
-            _wheelNotifier.sink.add(state.duration*100);//add  
-          }
-
-
-        }
-        
-        )
+      body:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: gibeonWheel()
+              ),
+     
+            WheelTimer(),
+            // new RaisedButton(
+            //   child: new Text("Start"),
+            //   onPressed: () =>
+            //       _wheelNotifier.sink.add(_generateRandomVelocity()),
+            // )
+          ],
+        ),
     
       
     );
   }
   
-  // double _generateRandomVelocity() {
-  //   double  veloc = (Random().nextDouble() * 6000) + 2000;
-  //   print('VELO$veloc');
-  //   return veloc;
-  //   }
+  double _generateRandomVelocity() {
+    double  veloc = (Random().nextDouble() * 6000) + 2000;
+    print('VELO$veloc');
+    return veloc;
+    }
 
   double _generateRandomAngle() => Random().nextDouble() * pi * 2;
 }
@@ -164,7 +165,7 @@ class GRoulette extends StatelessWidget {
 
 Widget gibeonWheel(){
 
-  _wheelNotifier.sink.add(_generateRandomVelocity());
+  // _wheelNotifier.sink.add(_generateRandomVelocity());
 
   return SpinningWheel(
 
@@ -178,7 +179,7 @@ Widget gibeonWheel(){
                 onUpdate: _dividerController.add,
                 onEnd: _dividerController.add,
                 secondaryImage:
-                    Image.asset('assets/images/roulette-center-300.png'),
+                    Image.asset('assets/images/roulette-center-3000.png'),
                 secondaryImageHeight: 50,
                 secondaryImageWidth: 50,
                 shouldStartOrStop: _wheelNotifier.stream,
@@ -213,11 +214,11 @@ Widget gibeonWheel(){
     );
   }
   
-  double _generateRandomVelocity() {
-    double  veloc = (Random().nextDouble() * 6000) + 2000;
-    print('VELO$veloc');
-    return veloc;
-    }
+  // double _generateRandomVelocity() {
+  //   double  veloc = (Random().nextDouble() * 6000) + 2000;
+  //   print('VELO$veloc');
+  //   return veloc;
+  //   }
 
   double _generateRandomAngle() => Random().nextDouble() * pi * 2;
 }
@@ -387,9 +388,9 @@ class Roulette extends StatelessWidget {
               onUpdate: _dividerController.add,
               onEnd: _dividerController.add,
               secondaryImage:
-                  Image.asset('assets/images/roulette-center-300.png'),
-              secondaryImageHeight: 110,
-              secondaryImageWidth: 110,
+                  Image.asset('assets/images/gif_.gif'),
+              secondaryImageHeight: 318,
+              secondaryImageWidth: 318,
               shouldStartOrStop: _wheelNotifier.stream,
             ),
             SizedBox(height: 30),
