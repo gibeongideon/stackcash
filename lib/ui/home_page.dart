@@ -9,12 +9,15 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      // backgroundColor: Colors.yellowAccent,
+      body:Container(
+        // color: Colors.yellowAccent,
+        child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Container(
-              color: Color(0xffDDC3FF),
+              color: Color(0xffFF99DD),
               child: InkWell(
                   child: Center(child: Text('How to play')),
                   onTap: () {
@@ -53,6 +56,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
+      )
     );
   }
 

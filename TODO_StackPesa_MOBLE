@@ -21,7 +21,6 @@
 4  NOV    MPESA WITHRAW
 5  NOV    MPESA WITHRAW
 6  NOV    MPESA WITHRAW
-7  NOV   
 
 
 CLEAN UP/DEFACTOR 5 DAYS
@@ -33,3 +32,27 @@ CLEAN UP/DEFACTOR 5 DAYS
        
        
 
+
+PLAN ABOVE FAILES:
+
+   ### NEW PLAN:
+   
+   10th NOV:
+    * Place Stake Dialog as logged in User/Transaction History//LIST BALACE FROM BACKEND////NOT Optimized
+    
+   11th NOV
+    * Wheel Market List/ACTIVE /INActive/
+    
+   12th NOV
+    * Timing wheel stuff
+    
+   13th NOV
+   * ACTIVE BETTING 
+   
+   14/15
+   * Refactor ABOVE
+   
+   
+   
+   
+   

@@ -6,7 +6,7 @@ import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
 import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
 import 'package:stackcash/blocs/log_in/login/bloc/login_bloc.dart';
 import 'package:stackcash/blocs/log_in/login/login_form.dart';
-
+import 'package:stackcash/ui/const/color_const.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -19,9 +19,11 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login | StackPesa'),//stackit // stackcash/stackpesa// gstacks   stackcash
-      ),
+      // appBar: AppBar(
+        // backgroundColor: YELLOW,
+      
+        // title: Text('Login | StackPesa',style: TextStyle( color:Colors.deepPurpleAccent, fontSize: 20.0)),//stackit // stackcash/stackpesa// gstacks   stackcash
+      // ),
       body: BlocProvider(
         create: (context) {
           return LoginBloc(

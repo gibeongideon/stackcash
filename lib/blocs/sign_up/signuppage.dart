@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:stackcash/blocs/sign_up/bloc/my_form_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:stackcash/ui/const/color_const.dart';
+import 'package:stackcash/ui/const/gradient_const.dart';
 
 // void main() {
 //   EquatableConfig.stringify = kDebugMode;
@@ -15,7 +17,9 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('StackPesa | Register')),
+        appBar: AppBar(
+          backgroundColor: YELLOW,
+          title: const Text('StackPesa | Register',style: TextStyle( color:Colors.deepPurpleAccent, fontSize: 20.0))),
         body: BlocProvider(
           create: (_) => MyFormBloc(),
           child: SignUpForm(),
@@ -60,26 +64,30 @@ class SignUpForm extends StatelessWidget {
         }
       },
       child:Container(
-            color: Colors.lightBlueAccent ,
-            child: Form(
-              child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    // EmailInput(),
-                    PhoneNumberInput(),
-                    PasswordInput(),
-                    ConfirmPasswordInput(),
-                    SubmitButton(),
-            
-          ],
-        ),
 
-    )
-    
-    )
+            // color: Colors.lightBlueAccent ,
+        decoration: BoxDecoration(
+          gradient: SIGNUP_BACKGROUND),
+
+        child: Form(
+          child: Padding(
+            padding: EdgeInsets.all(35.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                // EmailInput(),
+                PhoneNumberInput(),
+                PasswordInput(),
+                ConfirmPasswordInput(),
+                SubmitButton(),
+        
+      ],
+    ),
+
+)
+
+)
     ),
     );
 
