@@ -6,7 +6,6 @@
 import "package:flutter/material.dart";
 import 'package:stackcash/ui/const/color_const.dart';
 
-
 class GradientUtil {
   static LinearGradient _getLinearGradient(Color left, Color right,
           {begin = AlignmentDirectional.centerStart,
