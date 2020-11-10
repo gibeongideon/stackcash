@@ -19,11 +19,11 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: YELLOW,
+      // appBar: AppBar(
+        // backgroundColor: YELLOW,
       
-        title: Text('Login | StackPesa',style: TextStyle( color:Colors.deepPurpleAccent, fontSize: 20.0)),//stackit // stackcash/stackpesa// gstacks   stackcash
-      ),
+        // title: Text('Login | StackPesa',style: TextStyle( color:Colors.deepPurpleAccent, fontSize: 20.0)),//stackit // stackcash/stackpesa// gstacks   stackcash
+      // ),
       body: BlocProvider(
         create: (context) {
           return LoginBloc(

@@ -71,7 +71,7 @@ class SignUpForm extends StatelessWidget {
 
         child: Form(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(35.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

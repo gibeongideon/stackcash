@@ -15,7 +15,7 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState2 extends State<LoginForm> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -145,20 +145,37 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 
-class _LoginFormState2 extends State<LoginForm> {
-  TextEditingController _username = TextEditingController();
-  TextEditingController _password = TextEditingController();
+class _LoginFormState extends State<LoginForm> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    _onLoginButtonPressed() {
+      BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
+        username: _usernameController.text,
+        password: _passwordController.text,
+      ));
+    }
+
     final _media = MediaQuery.of(context).size;
 
-    return Scaffold(
-      body: Container(
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state is LoginFaliure) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('${state.error}'),
+            backgroundColor: Colors.red,
+          ));
+        }
+      },
+      child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          return Container(
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: SIGNUP_BACKGROUND,
+          gradient: SIGNIN_BACKGROUND,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -168,7 +185,7 @@ class _LoginFormState2 extends State<LoginForm> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 60.0, horizontal: 40),
+                        vertical: 50.0, horizontal: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -179,105 +196,232 @@ class _LoginFormState2 extends State<LoginForm> {
                           ),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         Text(
-                          "WELCOME BACK!",
+                          "Welcome To StackPesa!",
                           style: TextStyle(
                             letterSpacing: 4,
                             fontFamily: "Montserrat",
                             fontWeight: FontWeight.bold,
                             fontSize: TEXT_LARGE_SIZE,
+                            color: Colors.blue,
                           ),
                         ),
-                        SizedBox(height: 30),
+                        SizedBox(height: 20),
                         Text(
                           'Log in',
                           style: TextStyle(
                               fontFamily: "Montserrat",
                               fontWeight: FontWeight.w200,
-                              fontSize: 40),
+                              fontSize: 40,
+                              color: Colors.blue),
                         ),
                         Text(
                           'to continue.',
                           style: TextStyle(
                               fontFamily: "Montserrat",
                               fontWeight: FontWeight.w200,
-                              fontSize: 40),
+                              fontSize: 30,
+                              color: Colors.blue),
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 20,
                         ),
+
+
                         Container(
-                          height: _media.height / 3.8,
+                          // height: _media.height / 3.8,
                           decoration: BoxDecoration(
                             gradient: SIGNUP_CARD_BACKGROUND,
                             borderRadius: BorderRadius.circular(15),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black12,
+                                color: Colors.black26,
                                 blurRadius: 15,
                                 spreadRadius: 8,
                               ),
                             ],
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: Column(
-                              children: <Widget>[
-                                Expanded(
-                                  child: inputText("USERNAME",
-                                      'hristov123@gmail.com', _username, false),
-                                ),
-                                Divider(
-                                  height: 5,
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                    child: inputText(
-                                        "PASSWORD", '******', _password, true)),
-                              ],
+                          child:Form(
+                            child: Padding(
+                              padding: EdgeInsets.all(20),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  // Container(child:Text('SPINCASH LOGO'),),
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                        labelText: 'mobile number', icon: Icon(Icons.phone)),
+                                    controller: _usernameController,
+                                  ),
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                        labelText: 'password', icon: Icon(Icons.security)),
+                                    controller: _passwordController,
+                                    obscureText: true,
+                                  ),
+                                  Container(
+                                    // width: MediaQuery.of(context).size.width * 0.85,
+                                    // height: MediaQuery.of(context).size.width * 0.12,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 10.0),
+                                      child: Column(
+                                        children: <Widget>[
+                                          RaisedButton(
+                                            color: BLUE,
+                                        onPressed: state is! LoginLoading
+                                            ? _onLoginButtonPressed
+                                            : null,
+                                        child: Text(
+                                          'Login',
+                                          style: TextStyle(
+                                            fontSize: 18.0,color:Colors.blue
+                                          ),
+                                        ),
+                                        shape: StadiumBorder(
+                                          side: BorderSide(
+                                            color: Colors.yellow,
+                                            width: 2,
+                                          ),
+                                        ),
+                                      ),
+                                  
+                                        ],
+                                      ), 
+                                    ),
+                                  ),
+                                  // Container(
+                                  //   // width: MediaQuery.of(context).size.width * 0.55,
+                                  //   // height: MediaQuery.of(context).size.width * 0.12,
+                                  //   child: Padding(
+                                  //     padding: EdgeInsets.only(top: 10.0),
+                                  //     child: Column(
+                                  //       children: <Widget>[
+
+                                  //         Text('Don\'t have an account?'),//,style: TextStyle(fontFamily: 'Montserrat',color: Colors.black),
+                                  //     // ),
+                                  //     RaisedButton(
+                                  //       color: BLUE,
+                                  //       onPressed: () {
+                                  //         // BlocProvider.of<AuthenticationBloc>(context).add(SignUpButtonPressed());
+                                  //         Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
+                                  //       },
+                                  //       child: Text(
+                                  //         'Register Here',
+                                  //         style: TextStyle(
+                                  //           fontSize: 15.0,color: Colors.black45
+                                  //         ),
+                                  //       ),
+                                  //       shape: StadiumBorder(
+                                  //         side: BorderSide(
+                                  //           color: Colors.yellow,
+                                  //           width: 2,
+                                  //         ),
+                                  //       ),
+                                  //     ),
+
+                                  //       ],
+                                  //     ), 
+                                  //   ),
+                                  // ),
+                                  // // Container(
+                                  // //   child: state is LoginLoading
+                                  // //       ? CircularProgressIndicator()
+                                  // //       : null,
+                                  // // ),
+                                ],
+                              ),
                             ),
-                          ),
+            ),
+                          
+                          
+                          
                         ),
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        StringConst.SIGN_UP_TEXT,
-                        style: TextStyle(color: MAIN_COLOR),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () => print("Sign Up Tapped"),
-                        child: Text(StringConst.SIGN_UP),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 50,
-                  )
+
+
+                                  Container(
+                                    // width: MediaQuery.of(context).size.width * 0.55,
+                                    // height: MediaQuery.of(context).size.width * 0.12,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 5.0),
+                                      child: Column(
+                                        children: <Widget>[
+
+                                          Text('Don\'t have an account?', style: TextStyle(
+                                            fontSize: 15.0,color: Colors.blue)),//,style: TextStyle(fontFamily: 'Montserrat',color: Colors.black),
+                                      // ),
+                                      RaisedButton(
+                                        color: BLUE,
+                                        onPressed: () {
+                                          // BlocProvider.of<AuthenticationBloc>(context).add(SignUpButtonPressed());
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpPage()), );
+                                        },
+                                        child: Text(
+                                          'Register Here',
+                                          style: TextStyle(
+                                            fontSize: 15.0,color: Colors.black45
+                                          ),
+                                        ),
+                                        shape: StadiumBorder(
+                                          side: BorderSide(
+                                            color: Colors.yellow,
+                                            // width: 1,
+                                          ),
+                                        ),
+                                      ),
+
+                                        ],
+                                      ), 
+                                    ),
+                                  ),
+                                  // Container(
+                                  //   child: state is LoginLoading
+                                  //       ? CircularProgressIndicator()
+                                  //       : null,
+                                  // ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: <Widget>[
+                  //     Text(
+                  //       StringConst.SIGN_UP_TEXT,
+                  //       style: TextStyle(color: MAIN_COLOR),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () => print("Sign Up Tapped"),
+                  //       child: Text(StringConst.SIGN_UP),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: 50,
+                  // )
                 ],
               ),
-              Positioned(
-                bottom: _media.height / 6.3,
-                right: 15,
-                child: SignUpArrowButton(
-                  icon: IconData(0xe901, fontFamily: 'Icons'),
-                  iconSize: 9,
-                  onTap: () => print("Signup Tapped"),
-                ),
-              ),
+              // Positioned(
+              //   bottom: _media.height / 6.3,
+              //   right: 15,
+              //   child: SignUpArrowButton(
+              //     icon: IconData(0xe901, fontFamily: 'Icons'),
+              //     iconSize: 9,
+              //     onTap: () => print("Signup Tapped"),
+              //   ),
+              // ),
             ],
           ),
-        ),
-      ),
+        )
+        
+        );
+      },
+    )
     );
   }
 

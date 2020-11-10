@@ -11,9 +11,9 @@ class Stake {
   int marketinstant;
   int marketselection;
   String amount;
-  String update_account_on_win_lose;
+  // String update_account_on_win_lose;
 
-  Stake({this.username,this.marketinstant, this.marketselection,this.amount,this.update_account_on_win_lose});
+  Stake({this.username,this.marketinstant, this.marketselection,this.amount});
 
   factory Stake.fromJson(Map<String,dynamic>json){
     return Stake(
@@ -21,11 +21,12 @@ class Stake {
       marketinstant: json['marketinstant'],
       marketselection: json['marketselection'],
       amount: json['amount'],
-      update_account_on_win_lose: json['update_account_on_win_lose'],
+      // update_account_on_win_lose: json['update_account_on_win_lose'],
       
     );
 }
 }
+
 
 
 class Account {

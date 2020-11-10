@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:stackcash/data/data_provider/create_user_api.dart';
 
 // import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
 // import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
@@ -32,13 +33,20 @@ class WheelBloc extends Bloc<WheelEvent, WheelState> {
   ) async* {
     if (event is WheelButtonPressed) {
       yield WheelLoading();
+      try {
+        placeStake();
+      } catch(error){
+        print('STAKEERROR$error');
+      }
 
       try {
+
+        
       //   final user = await userRepository.authenticate(
       //     username: event.username,
       //     password: event.password,
       //   );
-      await Future<void>.delayed(const Duration(seconds: 1));
+      await Future<void>.delayed(const Duration(seconds: 10));
       final double vel =8500;
 
       //   authenticationBloc.add(LoggedIn(user: user));
