@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:stackcash/blocs/wheel/games.dart';
 import 'package:stackcash/blocs/wheel/wheel/wheel_page.dart';
 // import 'package:stackcash/blocs/wheel/wheel_timer/wheel_timer.dart';
+import 'package:stackcash/blocs/transactions/posts/view/posts_page.dart';
 
 
 class MyHomePage extends StatelessWidget {
@@ -32,11 +33,11 @@ class MyHomePage extends StatelessWidget {
             child: Container(
               color: Color(0xffFE9D2),
               child: InkWell(
-                  child: Center(child: Text('Invite Friend games')),
+                  child: Center(child: Text('Transaction History')),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Roulette()),
+                      MaterialPageRoute(builder: (context) => PostsPage()),
                     );
                   }),
             ),
