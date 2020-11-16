@@ -39,14 +39,15 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     if (state.hasReachedMax) return state;
     try {
       if (state.status == PostStatus.initial) {
-        final posts = await _fetchPosts(0, 20);
+        print(state.posts.length);
+        final posts = await _fetchPosts(0, 10);
         return state.copyWith(
           status: PostStatus.success,
           posts: posts,
           hasReachedMax: false,
         );
       }
-      final posts = await _fetchPosts(state.posts.length, 20);
+      final posts = await _fetchPosts(state.posts.length, 10);
       return posts.isEmpty
           ? state.copyWith(hasReachedMax: true)
           : state.copyWith(
@@ -59,12 +60,14 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     }
   }
 
-  Future<List<Post>> _fetchPosts(int startIndex, int id) async {
+  Future<List<Post>> _fetchPosts(int startIndex, int limit) async {
+
     final response = await httpClient.get(
-      'http://10.0.2.2:8000/api/user_trans/1',
+      'http://10.0.2.2:8000/api/user_trans/_start=$startIndex&_limit=$limit/_user_id=1'
     );
     if (response.statusCode == 200) {
-      final data = json.decode(response.body) as List;
+      final data = (json.decode(response.body) as List);//Reverse ensure last be first
+      // final data =datat.reversed;
       return data.map((dynamic rawPost) {
         return Post(
           id: rawPost['id'] as int,

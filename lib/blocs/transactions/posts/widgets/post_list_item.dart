@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stackcash/blocs/transactions/posts/posts.dart';
 import 'package:stackcash/ui/const/gradient_const.dart';
+import 'package:stackcash/ui/const/color_const.dart';
 
 class PostListItem extends StatelessWidget {
   const PostListItem({Key key, @required this.post}) : super(key: key);
@@ -25,7 +26,7 @@ class PostListItem extends StatelessWidget {
           ),
           isThreeLine: false,
           trailing: Text('${post.id}'),
-          tileColor: Colors.yellow,
+          tileColor: BLUE_LIGHT,
           // dense: true,
         )
     )

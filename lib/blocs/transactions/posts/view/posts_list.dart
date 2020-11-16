@@ -29,10 +29,10 @@ class _PostsListState extends State<PostsList> {
       builder: (context, state) {
         switch (state.status) {
           case PostStatus.failure:
-            return const Center(child: Text('failed to fetch posts'));
+            return const Center(child: Text('failed to fetch transactions'));
           case PostStatus.success:
             if (state.posts.isEmpty) {
-              return const Center(child: Text('no posts'));
+              return const Center(child: Text('no transactions'));
             }
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
@@ -46,7 +46,9 @@ class _PostsListState extends State<PostsList> {
               controller: _scrollController,
             );
           default:
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(
+              backgroundColor: Colors.yellowAccent,
+            ));
         }
       },
     );
