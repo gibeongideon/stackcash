@@ -5,12 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stackcash/blocs/log_in/repository/user_repository.dart';
 
 import 'package:stackcash/blocs/log_in/bloc/authentication_bloc.dart';
+import 'package:stackcash/blocs/log_in/login/bloc/login_bloc.dart';
 import 'package:stackcash/blocs/log_in/splash/splash.dart';
 import 'package:stackcash/blocs/log_in/login/login_page.dart';
 import 'package:stackcash/blocs/log_in/home/home.dart';
 import 'package:stackcash/blocs/log_in/common/common.dart';
-import 'package:stackcash/blocs/sign_up/signuppage.dart';
-import 'package:stackcash/data/repository/user_data_repository.dart';
+// import 'package:stackcash/blocs/sign_up/signuppage.dart';
+// import 'package:stackcash/data/repository/user_data_repository.dart';
 
 class SimpleObserver extends BlocObserver {
   @override
@@ -37,14 +38,48 @@ void main() {
   // final userDataRepository = UserDataRepository(); 
 
   runApp(
-    BlocProvider<AuthenticationBloc>(
-      create: (context) {
-        return AuthenticationBloc(
-          userRepository: userRepository
-        )..add(AppStarted());
-      },
+  
+    MultiBlocProvider(
+      providers: [
+
+        BlocProvider<AuthenticationBloc>(
+          create: (context) {
+            return AuthenticationBloc(
+              userRepository: userRepository)..add(AppStarted());
+            }
+          ),
+        BlocProvider<LoginBloc>(
+          create: (context) {
+            return LoginBloc(
+              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+              userRepository: userRepository);
+            }
+          ),
+
+        // BlocProvider<BlocA>(
+        //   create: (BuildContext context) => BlocA(),
+        // ),
+        // BlocProvider<BlocB>(
+        //   create: (BuildContext context) => BlocB(),
+        // ),
+        // BlocProvider<BlocC>(
+        //   create: (BuildContext context) => BlocC(),
+        // ),
+      ],
       child: App(userRepository: userRepository),
-    )
+
+      )
+
+
+
+    // BlocProvider<AuthenticationBloc>(
+    //   create: (context) {
+    //     return AuthenticationBloc(
+    //       userRepository: userRepository
+    //     )..add(AppStarted());
+    //   },
+      // child: App(userRepository: userRepository),
+    
   );
 }
 
@@ -57,10 +92,11 @@ class App extends StatelessWidget {
   Widget build (BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
+        primarySwatch: Colors.yellow,
+        brightness: Brightness.dark,
       ),
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        // ignore: missing_return
         builder: (context, state) {
           if (state is AuthenticationUnintialized) {
             return SplashPage();
@@ -74,7 +110,7 @@ class App extends StatelessWidget {
           if (state is AuthenticationLoading) {
             return LoadingIndicator();
           }
-          return CircularProgressIndicator();//??
+          // return CircularProgressIndicator();//??
           
         },
       ),

@@ -34,7 +34,7 @@ class WheelBloc extends Bloc<WheelEvent, WheelState> {
     if (event is WheelButtonPressed) {
       yield WheelLoading();
       try {
-        placeStake();
+        placeStake( '550');
       } catch(error){
         print('STAKEERROR$error');
       }

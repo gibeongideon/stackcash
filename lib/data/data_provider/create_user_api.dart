@@ -11,11 +11,11 @@ import 'package:stackcash/data/models/api_user_models.dart';
   // String amount;
 
 
-Future<Stake>placeStake() async{ //int userName,int marketinstant,int marketselection,String amount
+Future<Stake>placeStake(String amount) async{ //int userName,int marketinstant,int marketselection,String amount
   final int userName = 1;
   final int marketinstant =19;
   final int marketselection = 2;
-  final String amount = '500.00';
+  // final String amount = '500.00';
 
 
   final http.Response response = await http.post(

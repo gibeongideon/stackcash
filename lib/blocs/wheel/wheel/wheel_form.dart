@@ -53,7 +53,7 @@ class _WheelFormState extends State<WheelForm> {
                               ? _onWheelButtonPressed
                               : null,
                           child: Text(
-                            'Wheel',
+                            'Spin Wheel',
                             style: TextStyle(
                               fontSize: 18.0,
                             ),

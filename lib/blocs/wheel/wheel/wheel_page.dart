@@ -10,6 +10,7 @@ import 'package:stackcash/ui/const/gradient_const.dart';
 // import 'package:stackcash/ui/const/images_const.dart';
 // import 'package:stackcash/ui/const/size_const.dart';
 // import 'package:stackcash/ui/const/string_const.dart';
+import './select_button.dart';
 
 
 
@@ -117,13 +118,15 @@ Widget gibeonWheel(){
                             ? GRouletteScore(snapshot.data) 
                             : Container(),
                             ),
+                            SizedBox(width:10,
+                            height:10),
+                            BetButton(),
 
 
                         ]
                       ),
                       
                       ),
-
  
                     Container(
                       // width: MediaQuery.of(context).size.width * 0.85,
@@ -217,11 +220,11 @@ Widget gibeonWheel(){
     // );
   }
   
-  double _generateRandomVelocity() {
-    double  veloc = (Random().nextDouble() * 6000) + 2000;
-    print('VELO$veloc');
-    return veloc;
-    }
+  // double _generateRandomVelocity() {
+  //   double  veloc = (Random().nextDouble() * 6000) + 2000;
+  //   print('VELO$veloc');
+  //   return veloc;
+  //   }
 
   double _generateRandomAngle() => Random().nextDouble() * pi * 2;
 }
@@ -232,25 +235,54 @@ class GRouletteScore extends StatelessWidget {
   final int selected;
 
   final Map<int, String> labels = {
-    1: 'RED-1\$',
-    2: 'WHITE-1\$',
-    3: 'RED-2\$',
-    4: 'WHITE-2\$',
-    5: 'RED-3\$',
-    6: 'WHITE-3\$',
-    7: 'RED-4\$',
-    8: 'WHITE-4\$',
+    1: 'RED   10',
+    2: 'WHITE 10',
+    3: 'RED   20',
+    4: 'WHITE 20',
+    5: 'RED   30',
+    6: 'WHITE 30',
+    7: 'RED   40',
+    8: 'WHITE 40',
 
   };
 
   GRouletteScore(this.selected);
 
+  // ignore: missing_return
+  Widget status(){
+    if (labels[selected].toString().contains('RED')) {
+      return Container(
+        width:45,
+        height:45,
+        color: Colors.red,
+        child:Center(
+          child:Text('${labels[selected].split("")[6]}'),
+        )
+      );
+    } else if(labels[selected].toString().contains('WHITE')) {
+
+    return Container(
+      width:45,
+      height:45,
+      color:Colors.white,
+      child:Center(
+          child:Text('${labels[selected].split("")[6]}'),
+        )
+      );
+     } //else{
+    //   return Text('WOW');
+    // }
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Text('${labels[selected]}',
-        style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
+    return status();
+    // return Text('${labels[selected]}',
+    //     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 24.0));
   }
 }
+
 
 
 

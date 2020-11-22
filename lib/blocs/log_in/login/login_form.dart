@@ -7,7 +7,7 @@ import 'package:stackcash/ui/const/color_const.dart';
 import 'package:stackcash/ui/const/gradient_const.dart';
 import 'package:stackcash/ui/const/images_const.dart';
 import 'package:stackcash/ui/const/size_const.dart';
-import 'package:stackcash/ui/const/string_const.dart';
+// import 'package:stackcash/ui/const/string_const.dart';
 // import 'package:stackcash/ui/page/signup/widgets/signup_arrow_button.dart';
 
 class LoginForm extends StatefulWidget {
@@ -175,7 +175,7 @@ class _LoginFormState extends State<LoginForm> {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: SIGNIN_BACKGROUND,
+          gradient: SIGNUP_BACKGROUND,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -199,10 +199,10 @@ class _LoginFormState extends State<LoginForm> {
                           height: 20,
                         ),
                         Text(
-                          "Welcome To StackPesa!",
+                          "Welcome To StackCash!",
                           style: TextStyle(
                             letterSpacing: 4,
-                            fontFamily: "Montserrat",
+                            // fontFamily: "Montserrat",
                             fontWeight: FontWeight.bold,
                             fontSize: TEXT_LARGE_SIZE,
                             color: Colors.blue,
@@ -210,9 +210,18 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         SizedBox(height: 20),
                         Text(
+                          'Ready to make money?',
+                          style: TextStyle(
+                              // fontFamily: "Montserrat",
+                              fontWeight: FontWeight.w200,
+                              fontSize: 20,
+                              color: Colors.red)
+                        ),
+                        SizedBox(height: 20),
+                        Text(
                           'Log in',
                           style: TextStyle(
-                              fontFamily: "Montserrat",
+                              // fontFamily: "Montserrat",
                               fontWeight: FontWeight.w200,
                               fontSize: 40,
                               color: Colors.blue),
@@ -220,7 +229,7 @@ class _LoginFormState extends State<LoginForm> {
                         Text(
                           'to continue.',
                           style: TextStyle(
-                              fontFamily: "Montserrat",
+                              // fontFamily: "Montserrat",
                               fontWeight: FontWeight.w200,
                               fontSize: 30,
                               color: Colors.blue),
@@ -234,7 +243,7 @@ class _LoginFormState extends State<LoginForm> {
                           // height: _media.height / 3.8,
                           decoration: BoxDecoration(
                             gradient: SIGNUP_CARD_BACKGROUND,
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(50),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black26,
@@ -353,7 +362,7 @@ class _LoginFormState extends State<LoginForm> {
                                         children: <Widget>[
 
                                           Text('Don\'t have an account?', style: TextStyle(
-                                            fontSize: 15.0,color: Colors.blue)),//,style: TextStyle(fontFamily: 'Montserrat',color: Colors.black),
+                                            fontSize: 15.0,color: Colors.black)),//,style: TextStyle(fontFamily: 'Montserrat',color: Colors.black),
                                       // ),
                                       RaisedButton(
                                         color: BLUE,
