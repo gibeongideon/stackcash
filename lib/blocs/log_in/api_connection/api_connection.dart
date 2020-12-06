@@ -28,11 +28,12 @@ Future<Token> getToken(UserLogin userLogin) async {
 
 
 
-// getUserId(user){
-//   final http.Response response = http.get(''),
-//       headers: <String, String>{
-//       'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//       body json
+getUserID(String username){
+  final userURL = _base+'/users/user_detail=$username';
+  // final http.Response response = http.get(userURL),
+  //     headers: <String, String>{
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //     },
+  //     body json
 
-// }
+}

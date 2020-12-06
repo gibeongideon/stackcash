@@ -44,6 +44,7 @@ class AuthenticationBloc
       await userRepository.persistToken(
         user: event.user
       );
+      // IMPLEMENT GET USER ID HERE and pass to next
       yield AuthenticationAuthenticated(user: event.user) ;
     }
 

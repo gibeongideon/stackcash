@@ -17,8 +17,12 @@ class UserRepository {
       password: password
     );
     Token token = await getToken(userLogin);
+    
+    int userId = 7;//await getUserID(username); //implement this
+
     User user = User(
       id: 0,
+      userId:userId,
       username: username,
       token: token.token,
     );
